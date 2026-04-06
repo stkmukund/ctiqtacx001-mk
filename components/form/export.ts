@@ -1,0 +1,9 @@
+export { default as BillingInfo } from './BillingInfo.vue';
+export { default as CustomerInfo } from './CustomerInfo.vue';
+export { default as Testimonial } from './Testimonial.vue';
+export { default as FormComponent } from './FormComponent.vue';
+export { default as LimitedStock } from './LimitedStock.vue';
+export { default as ShippingInfo } from './ShippingInfo.vue';
+export { default as PaymentInfo } from './PaymentInfo.vue';
+export { default as OrderQuanitySelector } from './OrderQuanitySelector.vue';
+export { default as OneTimeOffer } from './OneTimeOffer.vue';
