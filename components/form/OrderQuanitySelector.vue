@@ -78,28 +78,21 @@ const updatedSelectedPack = (campaignProductId: number) => {
 </script>
 
 <template>
-  <SectionLabel class-name="" title="Step 1: Order Quanity" />
+  <SectionLabel class-name="" title="Choose Your Abs Stimulator Package" />
   <section id="quanity-selector-body" :class="className">
     <div>
-      <header>
-        <p class="text-sm flex justify-between px-2">
-          <span>Product</span><span>Price</span>
-        </p>
-        <hr class="border border-black" />
-      </header>
-
-      <!-- Body -->
-      <main class="py-3 lg:py-5 flex flex-col gap-3 lg:gap-5 product-list">
+        <!-- Body -->
+      <main class="pb-0 flex flex-col gap-3 lg:gap-5 product-list">
         <label
           v-for="product in productDetails"
           :key="product.campaignProductId"
           @click="!cartStore.selectDisabled && updatedSelectedPack(product.campaignProductId)"
           :class="[
-            'flex items-center border rounded cursor-pointer transition-colors duration-200 p-2 space-x-2 w-full',
+            'flex items-center gap-3 active border-2 rounded-lg cursor-pointer transition-all duration-200 bg-white hover:bg-gray-100 lg:p-4 p-2 w-full relative',
             product.campaignProductId === 159
-          ? 'bg-[#ffff00] hover:bg-[#eeee46] pl-item'
+          ? 'pl-item bg-white hover:bg-gray-100'
           : product.campaignProductId === 161
-          ? 'bg-[#fff] hover:bg-[#EFEFEF] pl-item'
+          ? 'pl-item bg-white hover:bg-gray-100'
           : 'bg-white hover:bg-gray-100'
                   ]"
         >
@@ -107,33 +100,41 @@ const updatedSelectedPack = (campaignProductId: number) => {
             type="radio"
             :checked="selectedPack === product.campaignProductId"
             name="product"
-            class="form-radio text-blue-500 w-4 h-4"
+            class="form-radio text-blue-500 w-5 h-5"
             :disabled="cartStore.selectDisabled"
           />
           <NuxtImg
             :src="product.image"
             :placeholder="[12, 12]"
-            class="max-w-14 min-w-12 max-h-14 min-h-12"
+            class="lg:w-36 w-16 h-auto object-contain rounded-md border border-gray-300"
           />
           <div class="flex-1 lg:w-1/6 w-full">
+              <!-- Badge -->
+
+
             <span
               :class="[
-                'block text-nowrap text-white px-2 py-0.5 text-[10px] sm:text-xs font-bold w-fit sm:w-1/2 min-w-fit text-center rounded-sm',
-                product.campaignProductId === 159 ? 'bg-red-600' : 'bg-black'
+                'inline-block bg-black text-white text-xs font-semibold px-3 py-1 rounded-full mb-2',
+                product.campaignProductId === 159 ? 'bg-[#4B6B24]' : 'bg-black'
               ]"
             >
               {{ product.discount }}
             </span>
-            <p class="font-semibold text-xs sm:text-sm mt-1 w-4/5">{{ product.productName }}</p>
+            <p class="font-semibold text-sm sm:text-base mt-1 tracking-tight leading-5 w-4/5">{{ product.productName }}</p>
           </div>
-          <div class="text-right lg:pr-12 pr-0 pt-2 lg:pt-0">
-            <p class="text-xs sm:text-sm line-through text-red-500 font-bold">
-              ${{ product.compareAtPrice }}
-            </p>
-            <p class="text-sm sm:text-lg font-bold text-gray-800">${{ product.price }}</p>
-          </div>
+         <div class="text-right lg:pr-2 pr-0 flex flex-col justify-center">
+  
+  <p class="text-base sm:text-lg line-through text-red-500 font-semibold leading-tight">
+    ${{ product.compareAtPrice }}
+  </p>
+
+  <p class="text-base sm:text-2xl font-bold text-gray-900 leading-tight">
+    ${{ product.price }}
+  </p>
+
+</div>
           <div v-if="product.campaignProductId === 159">
-            <span class="side-tag" style="background: rgb(255, 0, 0);">Popular</span>
+            <span class="side-tag" style="background: rgb(255, 0, 0);">Most Popular</span>
           </div>
           <div v-if="product.campaignProductId === 161">
             <span class="side-tag" style="background: rgb(255, 0, 0);">Best Deal</span>

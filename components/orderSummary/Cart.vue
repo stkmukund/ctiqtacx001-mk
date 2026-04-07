@@ -1,9 +1,9 @@
 <template>
   <ClientOnly>
-    <div class="p-2 lg:p-3">
-      <section id="collapseSection" class="border shadow-sm rounded-md">
+    <div class="p-0 lg:p-0 border-0">
+      <section id="collapseSection" class="border-0">
         <!-- Collapse Header -->
-        <div @click="isCollapsed = !isCollapsed"
+        <!-- <div @click="isCollapsed = !isCollapsed"
           class="flex items-center justify-between p-4 border-b cursor-pointer bg-[#fafafa]" id="toggleSummary">
           <div class="flex items-center space-x-2">
             <svg width="20px" height="20px" class="" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -17,31 +17,33 @@
           </div>
           <div class="font-semibold">${{ total }}</div>
 
-        </div>
+        </div> -->
         <Transition name="collapse">
-          <main class="mx-2 lg:mx-3" v-if="!isCollapsed">
-            <table class="w-full bg-white text-sm sm:text-base">
+          <main class="border-0 border-[#e5e5e5]" v-if="!isCollapsed">
+            <table class="w-full bg-white text-sm sm:text-base p-4 border border-[#dfdfdf]">
               <tbody>
+                 <tr class="border-b-2 border-[#dfdfdf]">
+    <td colspan="2" class="text-center pr-5 text-lg font-semibold py-3">
+      Item
+      </td>
+        <td class="text-right pr-5 text-lg font-semibold">
+          Price
+      </td>
+      </tr>
                 <CartItemSkeleton v-if="cartLoading" />
                 <CartItem v-else v-for="item in productCart" :key="item.product_id" :item="item" />
-                <!-- Discount -->
-                <tr v-if="productCart.length > 0" id="discounttr" class="border-t">
-                  <td colspan="2" class="px-2 sm:px-3">
-                    <CustomInput v-model="formStore.formValues.discountCode" type="text" placeholder="Discount Code"
-                      class="sm:mr-3 mt-2" width="w-full" />
-                  </td>
-                  <td class="pr-2 pt-4">
-                    <CustomButton placeholder="Apply" @click="calculateDiscount" />
-                  </td>
-                </tr>
-                <!-- Discount MSG -->
-                <tr>
-                  <td colspan="3" class="px-2 sm:px-3">
+                </tbody>
+             
+            </table>
+              <CartSummary :loading="cartLoading" :summaryItems="summaryItems" />
+
+               <div class="w-full border-0">
+                  <div class="px-2 sm:px-3">
                     <!-- Coupon Success Messages -->
                     <div v-if="cartStore.couponSuccess.length">
                       <p v-for="(coupon, index) in cartStore.couponSuccess" :key="'success-' + index"
                         class="flex items-center justify-center gap-1 mt-2 xl:text-sm text-xs bg-blue-100 px-2 py-1 rounded-md font-semibold">
-                        <span class="text-green-700">{{ coupon.code }},</span>
+                        <span class="text-[#4B6B24]">{{ coupon.code }},</span>
                         <span>{{ coupon.msg }}</span>
                         <!-- Cross Svg -->
                         <span v-if="coupon.code !== 'VIP10'" class="cursor-pointer" @click="removeCoupon(coupon.code)">
@@ -61,12 +63,20 @@
                         <span>{{ cartStore.couponError.msg }}</span>
                       </p> <!-- Only show the first error message -->
                     </div>
-                  </td>
-                </tr>
-              </tbody>
-              <Spacer :mt="4" />
-              <CartSummary :loading="cartLoading" :summaryItems="summaryItems" />
-            </table>
+                  </div>
+                </div>
+                  <!-- Discount -->
+                <div v-if="productCart.length > 0" id="discounttr" class="flex gap-2 p-2 items-center align-center w-full">
+                  <div colspan="2" class="w-8/12 pl-3">
+                    <CustomInput v-model="formStore.formValues.discountCode" type="text" placeholder="Coupon Code"
+                      class="sm:mr-3 mt-2" width="w-full" />
+                  </div>
+                  <div class="w-4/12 pr-2 pt-4">
+                    <CustomButton placeholder="Apply" @click="calculateDiscount" />
+                  </div>
+                </div>
+                <!-- Discount MSG -->
+             <Spacer :mt="4" />
           </main>
         </Transition>
       </section>
@@ -114,7 +124,34 @@ const summaryItems = computed(() => {
 
   return [
     {
+      name: "Sub Total",
+      value: thankyouCase
+        ? 'FREE'
+        : vipOptIn.value || shippingThreshold.value
+          ? 'FREE'
+          : shipping,
+      loading: shippingLoading.value
+    },
+    {
       name: "Shipping",
+      value: thankyouCase
+        ? 'FREE'
+        : vipOptIn.value || shippingThreshold.value
+          ? 'FREE'
+          : shipping,
+      loading: shippingLoading.value
+    },
+    {
+      name: "Sales Tax",
+      value: thankyouCase
+        ? 'FREE'
+        : vipOptIn.value || shippingThreshold.value
+          ? 'FREE'
+          : shipping,
+      loading: shippingLoading.value
+    },
+    {
+      name: "Discount",
       value: thankyouCase
         ? 'FREE'
         : vipOptIn.value || shippingThreshold.value

@@ -1,8 +1,9 @@
 <template>
-  <tbody class="h-[40px] border-t">
+    <table class="w-full bg-white text-sm sm:text-base">
+  <tbody class="">
     <tr v-for="(label, index) in summaryItems" :key="index">
-      <td class="px-4 font-semibold">{{ label.name }}</td>
-      <td class="px-4"></td>
+      <td class="px-4 py-1 font-semibold" width="80%">{{ label.name }}</td>
+      <!-- <td class="px-4"></td> -->
       <td class="font-semibold text-right pr-4">
         <template v-if="!loading">
           <template v-if="label.loading">
@@ -22,6 +23,7 @@
       </td>
     </tr>
   </tbody>
+  </table>
 </template>
 
 <script setup lang="ts">

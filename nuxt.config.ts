@@ -7,7 +7,7 @@ export default defineNuxtConfig({
   css: ["@/assets/css/main.css"],
 
   app: {
-    baseURL: process.env.PUBLIC_BASE_URL || 'http://localhost:3000',
+    baseURL: process.env.PUBLIC_BASE_URL,
     head: {
       title: 'Tactical X Secure Checkout',
       link: [

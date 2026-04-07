@@ -1,5 +1,5 @@
 <template>
-  <table class="bg-[#FFD439] text-xs">
+  <table class="bg-[#FFD439] text-sm">
     <tbody>
       <tr class="flex gap-2 p-2">
         <td>
@@ -12,12 +12,9 @@
         </td>
         <td>
           <p class="font-semibold cursor-pointer" @click="() => updateVipOptIn(false)">
-            Claim FREE S&H on my order today (Save $4.99). This offer expires once you leave the page! I am 18 years or older
-            and agree to the <a href="http://policy.tacticalxabs.com/tacticalxabs/policies/terms.html" target="_blank"
-              class="link">terms and
-              conditions</a> and <a href="http://policy.tacticalxabs.com/tacticalxabs/policies/privacy.html" target="_blank"
-              class="link">privacy
-              policy</a>.
+          Claim 5% OFF my order TODAY + FREE S&H (save $4.99) + Tactical X Abs VIP. This offer expires once you leave the page! By clicking this box you certify that you are 18 years or older and agree to the <a href="http://policy.tacticalxabs.com/tacticalxabs/policies/terms.html" target="_blank"
+              class="link">terms of service</a> and <a href="http://policy.tacticalxabs.com/tacticalxabs/policies/privacy.html" target="_blank"
+              class="link">privacy policy</a>.
           </p>
         </td>
         <td>

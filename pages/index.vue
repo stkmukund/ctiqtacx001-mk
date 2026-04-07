@@ -1,6 +1,6 @@
 <template>
   <CheckoutHeader />
-  <section class="container mx-auto lg:max-w-[1169px] 2xl:max-w-[1320px]">
+  <section class="w-full max-w-6xl mx-auto bg-gray-100">
     <FormComponent />
   </section>
   <ClientOnly>

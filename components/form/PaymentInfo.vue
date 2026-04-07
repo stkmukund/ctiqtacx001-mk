@@ -1,43 +1,128 @@
 <template>
   <section id="paymentManagemen" :class="className">
-    <small class="font-poppins font-medium">All transactions are secure and encrypted</small>
-    <div class="mt-2 border border-solid border-[#dadada] rounded-lg">
+    <small class="font-poppins font-medium capitalize">All transactions are secure and encrypted</small>
+    <div class="mt-2 border border-solid border-[#dadada] rounded-lg bg-white">
       <label for="creditCard" @click="() => handlePaymentOptionClick('CREDITCARD')"
-        class="font-montserrat font-semibold flex items-center justify-between p-4 text-lg cursor-pointer">
+        class="font-semibold flex items-center justify-between p-2 text-lg cursor-pointer">
         <!-- Right Section -->
         <aside class="flex items-center gap-2 sm:gap-3">
-          <div
-            :class="['w-3 h-3 rounded-full', formStore.formValues.paymentMethod === 'CREDITCARD' ? 'bg-green-500' : 'bg-white border border-gray-400']">
-          </div>
-          <span>Credit/Debit Card</span>
+         <div 
+  @click="formStore.formValues.paymentMethod = 'CREDITCARD'"
+  :class="[
+    'w-5 h-5 rounded-full flex items-center justify-center cursor-pointer border-2',
+    formStore.formValues.paymentMethod === 'CREDITCARD'
+      ? 'border-[#0075FF]'
+      : 'border-gray-400'
+  ]"
+>
+  <div 
+    v-if="formStore.formValues.paymentMethod === 'CREDITCARD'"
+    class="w-3 h-3 rounded-full bg-[#0075FF]"
+  ></div>
+</div>
+          <span>Credit Card</span>
         </aside>
-        <NuxtImg src="/images/card.svg" loading="lazy" class="w-24 sm:w-34" />
+      <aside class="flex items-center gap-2">
+    <NuxtImg
+      src="/images/card.png"
+      loading="lazy"
+      class="w-32 sm:w-40"
+    />
+    <span class="text-xs text-gray-300 whitespace-nowrap">
+      and more...
+    </span>
+  </aside>
       </label>
       <Transition>
-        <div v-if="formStore.formValues.paymentMethod === 'CREDITCARD'" class="bg-[#fafafa] p-4">
-          <CustomInput id="cardNumber" v-model="formValues!.cardNumber" type="text" placeholder="Card Number"
-            :errorMessage="errors!.cardNumber" :maxLength="16" regex="^[0-9]*$" />
-          <div class="sm:flex sm:space-x-4">
-            <CustomInput id="expiryMonth" v-model="formValues!.expiryMonth" type="text" placeholder="MM"
-              :errorMessage="errors!.expiryMonth" :maxLength="2" regex="^[0-9]*$" />
-            <CustomInput id="expiryYear" v-model="formValues!.expiryYear" type="text" placeholder="YYYY"
-              :errorMessage="errors!.expiryYear" :maxLength="4" regex="^[0-9]*$" />
-            <CustomInput id="cvv" v-model="formValues!.cvv" type="text" placeholder="CVV Code"
-              :errorMessage="errors!.cvv" :maxLength="4" regex="^[0-9]*$" />
-          </div>
-        </div>
+       <div v-if="formStore.formValues.paymentMethod === 'CREDITCARD'" class="bg-gray-100 p-2">
+
+  <!-- Card Number -->
+  <div class="relative mb-3">
+    <CustomInput
+      id="cardNumber"
+      v-model="formValues!.cardNumber"
+      type="text"
+      placeholder="Card Number"
+      :errorMessage="errors!.cardNumber"
+      :maxLength="16"
+      regex="^[0-9]*$"
+    />
+
+    <!-- Lock Icon -->
+     <img :src="'/images/lock-black.png'" class="absolute right-3 top-1/2 -translate-y-1/2 w-4 h-auto opacity-100 pointer-events-none" />
+  
+  </div>
+
+  <!-- Expiry + CVV -->
+  <div class="sm:flex sm:space-x-4">
+
+    <!-- Expiry -->
+    <div class="relative w-full mb-3 sm:mb-0">
+      <CustomInput
+        id="expiryMonth"
+        v-model="formValues!.expiryMonth"
+        type="text"
+        placeholder="MM/YY"
+        :errorMessage="errors!.expiryMonth"
+        :maxLength="2"
+        regex="^[0-9]*$"
+      />
+    </div>
+
+    <!-- CVV -->
+    <div class="relative w-full">
+      <CustomInput
+        id="cvv"
+        v-model="formValues!.cvv"
+        type="text"
+        placeholder="CVV"
+        :errorMessage="errors!.cvv"
+        :maxLength="4"
+        regex="^[0-9]*$"
+      />
+
+        <!-- Tooltip Wrapper -->
+  <div class="absolute right-3 top-1/2 -translate-y-1/2 group">
+    
+    <!-- Question Icon -->
+  <img :src="'/images/question.png'" 
+      class="w-4 h-auto cursor-pointer"
+    />
+
+    <!-- Tooltip -->
+    <div class="absolute bottom-6 right-0 w-52 h-auto hidden group-hover:block bg-black text-white text-xs rounded px-3 py-2 text-center">
+     3-digit security code usually found on the back of your card. American Express cards have a 4-digit code located on the front.
+                                
+    </div>
+
+  </div>
+    
+    </div>
+  </div>
+</div>
       </Transition>
       <aside @click="() => handlePaymentOptionClick('PAYPAL')"
-        class="flex font-semibold items-center gap-2 sm:gap-3 p-4 text-lg cursor-pointer">
-        <div
-          :class="['w-3 h-3 rounded-full', formStore.formValues.paymentMethod === 'PAYPAL' ? 'bg-green-500' : 'bg-white border border-gray-400']">
-        </div>
+        class="flex font-semibold items-center gap-2 sm:gap-3 p-2 text-lg cursor-pointer border-t-2">
+      <div 
+  @click="formStore.formValues.paymentMethod = 'PAYPAL'"
+  :class="[
+    'w-5 h-5 rounded-full flex items-center justify-center cursor-pointer border-2 transition-all duration-200',
+    formStore.formValues.paymentMethod === 'PAYPAL'
+      ? 'border-[#0075FF]'
+      : 'border-gray-400'
+  ]"
+>
+  <div 
+    v-if="formStore.formValues.paymentMethod === 'PAYPAL'"
+    class="w-3 h-3 rounded-full bg-[#0075FF]"
+  ></div>
+</div>
         <span>
-          <NuxtImg src="/images/paypal-title.svg" loading="lazy" class="w-24 sm:w-34" />
+          <NuxtImg src="/images/paypal.png" loading="lazy" class="w-24 sm:w-34" />
         </span>
       </aside>
       <Transition>
-        <div v-if="formStore.formValues.paymentMethod === 'PAYPAL'" class="bg-[#fafafa] p-6">
+        <div v-if="formStore.formValues.paymentMethod === 'PAYPAL'" class="bg-gray-100 p-4">
           <NuxtImg @click="handleSubmit" src="/images/new-paypal-logo.webp" class="w-2/3 mx-auto cursor-pointer"
             loading="lazy" />
         </div>

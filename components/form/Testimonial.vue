@@ -1,29 +1,41 @@
 <template>
   <div v-for="testimonial in testimonials" :key="testimonial.profileImg"
-    class="flex items-start lg:gap-3 gap-1 mb-6 border rounded-md lg:p-4 p-1">
+    class="flex items-start lg:gap-3 gap-1 mb-3 last:mb-0 bg-gray-100 border rounded-md lg:p-4 p-1">
     <!-- Profile Image -->
     <NuxtImg :src="testimonial.profileImg" alt="Profile"
-      class="w-[50px] sm:w-[60px] h-[50px] sm:h-[60px] m-1 rounded-full object-cover" loading="lazy" />
+      class="w-24 sm:w-28 h-auto sm:h-auto m-1 rounded-full object-cover" loading="lazy" />
 
     <div class="flex-1 ">
       <!-- Star Rating and Name -->
-      <div class="flex items-center justify-between">
-        <div class="flex items-center">
-          <!-- Star icons -->
-          <NuxtImg src="/images/testimonials/tps.svg" alt="star" class="w-[90px] h-[17px] mr-1 lg:mr-5"
-            loading="lazy" />
-          <span class="font-semibold lg:text-base text-xs sm:text-sm text-gray-900">- {{ testimonial.name }}</span>
-        </div>
-
-        <!-- Verified Badge -->
-        <div class="flex items-center gap-1 text-[10px] sm:text-xs text-gray-400">
-          <span>Verified review</span>
-          <NuxtImg src="/images/testimonials/verified.webp" alt="" class="w-4 sm:w-6" loading="lazy" />
-        </div>
-      </div>
 
       <!-- Review Text -->
-      <p class="mt-2 leading-relaxed font-medium text-[10px] sm:text-xs lg:text-sm">{{ testimonial.description }}</p>
+      <p class="mt-2 leading-relaxed font-normal text-[10px] sm:text-xs lg:text-sm">{{ testimonial.description }}</p>
+<div class="flex items-center text-yellow-400 mt-2">
+
+  <!-- 4 Full Stars -->
+    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.286 3.962h4.163c.969 0 1.371 1.24.588 1.81l-3.37 2.448 1.287 3.962c.3.921-.755 1.688-1.54 1.118L10 13.348l-3.375 2.878c-.784.57-1.838-.197-1.539-1.118l1.287-3.962-3.37-2.448c-.783-.57-.38-1.81.588-1.81h4.163l1.295-3.961z"/>
+  </svg>
+    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.286 3.962h4.163c.969 0 1.371 1.24.588 1.81l-3.37 2.448 1.287 3.962c.3.921-.755 1.688-1.54 1.118L10 13.348l-3.375 2.878c-.784.57-1.838-.197-1.539-1.118l1.287-3.962-3.37-2.448c-.783-.57-.38-1.81.588-1.81h4.163l1.295-3.961z"/>
+  </svg>
+    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.286 3.962h4.163c.969 0 1.371 1.24.588 1.81l-3.37 2.448 1.287 3.962c.3.921-.755 1.688-1.54 1.118L10 13.348l-3.375 2.878c-.784.57-1.838-.197-1.539-1.118l1.287-3.962-3.37-2.448c-.783-.57-.38-1.81.588-1.81h4.163l1.295-3.961z"/>
+  </svg>
+    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.286 3.962h4.163c.969 0 1.371 1.24.588 1.81l-3.37 2.448 1.287 3.962c.3.921-.755 1.688-1.54 1.118L10 13.348l-3.375 2.878c-.784.57-1.838-.197-1.539-1.118l1.287-3.962-3.37-2.448c-.783-.57-.38-1.81.588-1.81h4.163l1.295-3.961z"/>
+  </svg>
+ <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.286 3.962h4.163c.969 0 1.371 1.24.588 1.81l-3.37 2.448 1.287 3.962c.3.921-.755 1.688-1.54 1.118L10 13.348l-3.375 2.878c-.784.57-1.838-.197-1.539-1.118l1.287-3.962-3.37-2.448c-.783-.57-.38-1.81.588-1.81h4.163l1.295-3.961z"/>
+  </svg>
+</div> 
+         
+        <div class="flex items-center">
+          <!-- Star icons -->
+          
+          <span class="font-semibold lg:text-base text-xs sm:text-sm text-gray-900">{{ testimonial.name }}  — Verified Buyer</span>
+        </div>
+      
     </div>
   </div>
 </template>

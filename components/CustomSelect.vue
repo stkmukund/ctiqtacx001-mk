@@ -33,7 +33,7 @@ const props = defineProps({
   selectClass: {
     type: String,
     default:
-      "border border-gray-300 py-[6px] px-[12px] rounded-md bg-white text-gray-700 xl:text-sm text-xs  w-full h-[42px] mt-2",
+      "border border-gray-400 pt-2 px-[12px] rounded-md bg-white text-gray-700 xl:text-sm text-xs text-gray-400 w-full h-14 -mt-4",
   },
   id: String
 });
