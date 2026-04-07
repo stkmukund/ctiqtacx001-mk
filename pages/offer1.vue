@@ -29,7 +29,7 @@ const productDetails: any = ref({
     productQty: 1,
     productPrice: "",
     variantDetailId: "",
-    pageTo: "/offer2",
+    pageTo: "/offer1_1",
     ItemName: "",
     event: "Upsell1cv"
 })
@@ -43,7 +43,7 @@ upsell();
 // Route to next page
 const mayBeLater = async () => {
     checkoutStore.setStepCompleted(2);
-    router.push({ path: '/offer2' });
+    router.push({ path: '/offer1_1' });
 }
 </script>
 <template>

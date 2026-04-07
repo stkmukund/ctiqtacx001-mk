@@ -60,7 +60,7 @@ const productDetails: any = ref({
 
 // Route to next page
 const mayBeLater = async () => {
-    checkoutStore.setStepCompleted(3);
+    checkoutStore.setStepCompleted(4);
     router.push({ path: '/offer2_1' });
 }
 
@@ -461,5 +461,5 @@ const { minutes, seconds, startCountdown } = useCountdown(6, 15);
         </div>
     </section>
 
-    <Alert message="" :pageTo="'/offer3'" :stepCompleted="3" />
+    <Alert message="" :pageTo="'/offer3'" :stepCompleted="4" />
 </template>

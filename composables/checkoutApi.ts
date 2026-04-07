@@ -52,7 +52,7 @@ export const importOrder = async () => {
                 }
                 else {
                     checkoutStore.setStepCompleted(1);
-                   router.push({ path: '/offer1',state: { from: 'importorder' } });
+                    router.push({ path: '/offer1', state: { from: 'importorder' } });
                 }
             }
         }
@@ -149,7 +149,7 @@ export const confirmPaypal = async () => {
         storage.setSessionItem('productReceipt', { subTotal: response.message.subTotal, shipping: response.message.shipTotal, tax: response.message.taxTotal, total: response.message.totalAmount, items: mapppedData });
         checkoutStore.setStepCompleted(1);
         checkoutStore.updateConfirmPaypalLoading(false);
-        await router.push({ path: '/offer1',state: { from: 'importorder' } });
+        await router.push({ path: '/offer1', state: { from: 'importorder' } });
         return true;
     }
     if (response.result === "ERROR") {
@@ -167,13 +167,13 @@ export const upsellProducts = async (id: number) => {
     let data: any;
     if (response.result === 'SUCCESS') {
         const { products } = response.message.data[campaingID];
-        data = { productId: products[0].campaignProductId, price: products[0].price, variants: products[0].variants,title: products[0].productName,productPrice:products[0].price };
+        data = { productId: products[0].campaignProductId, price: products[0].price, variants: products[0].variants, title: products[0].productName, productPrice: products[0].price };
     }
     return data
 }
 
 // Upsell Import
-export const importUpsell = async ({ productId, productQty, productPrice, variantDetailId, pageTo,ItemName,event }: { productId: string, productQty: number, productPrice: string, variantDetailId: string, pageTo: string,ItemName:string,event:string }) => {
+export const importUpsell = async ({ productId, productQty, productPrice, variantDetailId, pageTo, ItemName, event }: { productId: string, productQty: number, productPrice: string, variantDetailId: string, pageTo: string, ItemName: string, event: string }) => {
     // checkoutStore
 
     const checkoutStore = useCheckoutStore();
@@ -200,21 +200,28 @@ export const importUpsell = async ({ productId, productQty, productPrice, varian
     const response: any = await apiHandler('importUpsell', params)
     const router = useRouter();
     if (response.result === 'SUCCESS') {
-            const datalayerobj = {
-                event: event,
-                currency: "USD",
-                ItemName: ItemName,
-                ItemPrice: productPrice,
-                value: productPrice,
-                ItemQty: productQty,
-                orderid: response.message.orderId,
-            };
+        const datalayerobj = {
+            event: event,
+            currency: "USD",
+            ItemName: ItemName,
+            ItemPrice: productPrice,
+            value: productPrice,
+            ItemQty: productQty,
+            orderid: response.message.orderId,
+        };
         checkoutStore.setTransactionStatus(false);
-        if (pageTo == "/offer2") checkoutStore.setStepCompleted(2)
-        if (pageTo == "/offer2_1") checkoutStore.setStepCompleted(3)
-        if (pageTo == "/offer3") checkoutStore.setStepCompleted(4)
-        if (pageTo == "/offer4") checkoutStore.setStepCompleted(5)
-        if (pageTo == "/thankyou") checkoutStore.setStepCompleted(6)
+        if (pageTo == "/offer1_1") checkoutStore.setStepCompleted(2)
+        if (pageTo == "/offer2") checkoutStore.setStepCompleted(3)
+        if (pageTo == "/offer2_1") checkoutStore.setStepCompleted(4)
+        if (pageTo == "/offer3") checkoutStore.setStepCompleted(5)
+        // if (pageTo == "/offer4") checkoutStore.setStepCompleted(6)
+        if (pageTo == "/offer3_1") checkoutStore.setStepCompleted(6)
+        if (pageTo == "/thankyou") checkoutStore.setStepCompleted(7)
+        // if (pageTo == "/offer2") checkoutStore.setStepCompleted(2)
+        // if (pageTo == "/offer2_1") checkoutStore.setStepCompleted(3)
+        // if (pageTo == "/offer3") checkoutStore.setStepCompleted(4)
+        // if (pageTo == "/offer4") checkoutStore.setStepCompleted(5)
+        // if (pageTo == "/thankyou") checkoutStore.setStepCompleted(6)
         // Important for DataLayer and CAPI
         const mapppedData = mapToProductCart(response.message.items);
         storage.setSessionItem('productCart', mapppedData);
@@ -224,7 +231,7 @@ export const importUpsell = async ({ productId, productQty, productPrice, varian
         storage.setSessionItem('cartTotal', response.message.amountPaid);
         storage.setSessionItem('orderId', response.message.orderId);
         storage.setSessionItem('productReceipt', { subTotal: response.message.subTotal, shipping: response.message.shipTotal, tax: response.message.taxTotal, total: response.message.totalAmount, items: mapppedData });
-        router.push({ path: pageTo,state: { from: 'importupsell',datalayerobj: datalayerobj }});
+        router.push({ path: pageTo, state: { from: 'importupsell', datalayerobj: datalayerobj } });
     }
     else {
         alert(true, response.message);

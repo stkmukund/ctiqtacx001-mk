@@ -15,14 +15,17 @@ export const checkSteps = async () => {
         case 1:
             return router.push('/offer1');
         case 2:
-            return router.push('/offer2');
+            return router.push('/offer1_1');
         case 3:
-            return router.push('/offer2_1');
+            return router.push('/offer2');
         case 4:
-            return router.push('/offer3');
+            return router.push('/offer2_1');
         case 5:
-            return router.push('/offer4');
+            return router.push('/offer3');
         case 6:
+            // return router.push('/offer4');
+            return router.push('/offer3_1');
+        case 7:
             return router.push('/thankyou');
         default:
         // return router.push('/');

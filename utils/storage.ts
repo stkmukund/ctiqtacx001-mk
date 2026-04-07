@@ -4,14 +4,14 @@ const storage = {
   // Set item in session storage
   setSessionItem(key: string, value: any): void {
     if (typeof window !== "undefined") {
-      sessionStorage.setItem(`V1${key}`, JSON.stringify(value));
+      sessionStorage.setItem(`V5${key}`, JSON.stringify(value));
     }
   },
 
   // Get item from session storage
   getSessionItem<T>(key: string): T | null {
     if (typeof window !== "undefined") {
-      const value = sessionStorage.getItem(`V1${key}`);
+      const value = sessionStorage.getItem(`V5${key}`);
       return value != 'undefined' ? JSON.parse(value!) : null;
     }
     return null; // For server-side rendering
@@ -20,7 +20,7 @@ const storage = {
   // Remove item from session storage
   removeSessionItem(key: string): void {
     if (typeof window !== "undefined") {
-      sessionStorage.removeItem(`V1${key}`);
+      sessionStorage.removeItem(`V5${key}`);
     }
   },
 
@@ -34,14 +34,14 @@ const storage = {
   // Set item in local storage
   setLocalItem(key: string, value: any): void {
     if (typeof window !== "undefined") {
-      localStorage.setItem(`V1${key}`, JSON.stringify(value));
+      localStorage.setItem(`V5${key}`, JSON.stringify(value));
     }
   },
 
   // Get item from local storage
   getLocalItem<T>(key: string): T | null {
     if (typeof window !== "undefined") {
-      const value = localStorage.getItem(`V1${key}`);
+      const value = localStorage.getItem(`V5${key}`);
       return value !== 'undefined' ? JSON.parse(value!) : null;
     }
     return null; // For server-side rendering
@@ -50,7 +50,7 @@ const storage = {
   // Remove item from local storage
   removeLocalItem(key: string): void {
     if (typeof window !== "undefined") {
-      localStorage.removeItem(`V1${key}`);
+      localStorage.removeItem(`V5${key}`);
     }
   },
 

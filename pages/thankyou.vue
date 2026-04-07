@@ -130,7 +130,7 @@
             </a>
 
             <p class="text-lg text-gray-800 mt-4">
-                Copyright 2025 Tactical-X Abs. All rights reserved.
+                Copyright 2026 Tactical-X Abs. All rights reserved.
             </p>
         </div>
     </section>

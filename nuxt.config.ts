@@ -86,10 +86,13 @@ export default defineNuxtConfig({
       freeShipProfileId: 2,
       tacticalXabsIds: [93, 156, 159, 161],
       offer1: 60,
+      offer1_1: 173,
       offer2: 122,
       offer2_1: 109,
       offer3: 72,
-      offer4: 123,
+      offer3_1: 132,
+
+      offer4: 123, // currently not in use.
       thankyou: 71,
       gtm: {
         id: "GTM-P4MS7R4D",
