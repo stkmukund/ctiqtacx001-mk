@@ -148,17 +148,3 @@ watch(
 );
 </script>
 
-<style scoped>
-#ship-country-label {
-  position: relative;
-  top: 7px;
-  left: 0;
-  margin-left: 18px;
-  margin-bottom: 0;
-  font-weight: 400;
-  padding-left: 0;
-  font-size: 12px;
-  font-family: inherit;
-  color: rgba(187, 187, 187, 1) !important;
-}
-</style>

@@ -23,12 +23,15 @@
             <section>
               <SectionLabel title="Shipping Method" />
               <Spacer />
+
+              <div class="px-2 lg:px-3 pb-3 mt-7">
               <CustomSelect v-if="formStore.formValues.country || formStore.formValues.billingCountry"
                 v-model="formStore.formValues.shippingMethod" :errorMessage="formStore.errors.shippingMethod"
                 :options="checkoutStore.vipOptIn ? shippingStore.freeShipping : checkoutStore.shippingThreshold ? shippingStore.freeShipping : shippingStore.shippingMethods"
                 placeholder="Select Shipping Method" optionsValue="shipProfileId" displayName="profileName" />
+                 </div>
             </section>
-
+           
           </section>
           <Spacer />
           <!-- Third Box -->
