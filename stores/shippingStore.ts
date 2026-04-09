@@ -53,7 +53,7 @@ export const useShippingStore = defineStore("shipping", () => {
 
   const setCountry = (country: object[]) => {
     countries.value = country;
-    if (formStore.formValues.sameAddress) formStore.formValues.billingCountry = formStore.formValues.country;
+    if (formStore.formValues.sameAddress == 'same') formStore.formValues.billingCountry = formStore.formValues.country;
   };
 
   const updateShipping = async () => {
@@ -109,7 +109,7 @@ export const useShippingStore = defineStore("shipping", () => {
     allStates,
     shipState,
     billState,
-    shippingMethods,
+    shippingMethods, 
     setShippingMethods,
     shippingAvailable,
     updateStateByName,

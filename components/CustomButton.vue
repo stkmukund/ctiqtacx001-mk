@@ -28,7 +28,7 @@ const props = defineProps({
 const computedClasses = computed(() => {
   const baseClasses = "text-white rounded-md";
   const sizeClasses =
-    props.size === "large" ? "w-full md:text-2xl tracking-widest p-3 text-lg font-bold mt-3" : "py-2 px-10  h-14  font-bold text-xl";
+    props.size === "large" ? "w-full md:text-2xl tracking-widest p-3 text-lg font-bold mt-3" : "py-2 px-10  h-14 w-full font-bold text-xl";
   const primaryClasses = props.color ? "bg-[#000] hover:bg-[#4b6b24]" : "bg-[#4b6b24]";
 
   return `${baseClasses} ${sizeClasses} ${primaryClasses}`;

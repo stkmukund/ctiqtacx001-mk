@@ -29,7 +29,7 @@ const productDetails: any = ref({
     productQty: 1,
     productPrice: "",
     variantDetailId: "",
-    pageTo: "/offer1_1",
+    pageTo: "/offer2",
     ItemName: "",
     event: "Upsell1cv"
 })

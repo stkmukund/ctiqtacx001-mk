@@ -20,7 +20,8 @@ export const useFormStore = defineStore("form", () => {
     country: "US",
     state: "",
     postalCode: "",
-    sameAddress: true,
+    // sameAddress: true,
+    sameAddress: 'same',
     billingFirstName: "",
     billingLastName: "",
     billingAddress1: "",
@@ -67,8 +68,8 @@ export const useFormStore = defineStore("form", () => {
       .refine((val) => isValidCardNumber(val), {
         message: "Invalid card number",
       }),
-    expiryMonth: z.string().min(1, "Expiry Month is required"),
-    expiryYear: z.string().min(4, "Expiry Year is required"),
+    expiryMonth: z.string().min(1, "Expiry Month and Year is required"),
+    expiryYear: z.string().min(2, "Expiry Year is required"),
     cvv: z.string().min(3, "CVV is required"),
   });
 
@@ -93,29 +94,54 @@ export const useFormStore = defineStore("form", () => {
 
   // Function to validate expiry month and year
   const validateExpiryDate = (month: string, year: string) => {
+    // ✅ RESET FIRST
+    errors.value.expiryMonth = [];
+    errors.value.expiryYear = [];
+
     const currentDate = new Date();
     const currentYear = currentDate.getFullYear();
-    const currentMonth = currentDate.getMonth() + 1; // Months are 0-indexed
+    const currentMonth = currentDate.getMonth() + 1;
 
-    const parsedYear = parseInt(year, 10);
+    // ✅ Handle empty FIRST
+    if (!month || month.length < 2) {
+      errors.value.expiryMonth = ["Expiry month is required"];
+    }
+
+    if (!year || year.length < 2) {
+      errors.value.expiryYear = ["Expiry year is required"];
+    }
+
+    // Stop early if empty
+    if (errors.value.expiryMonth.length || errors.value.expiryYear.length) {
+      return false;
+    }
+
     const parsedMonth = parseInt(month, 10);
+    const parsedYear = 2000 + parseInt(year, 10);
 
-    if (parsedMonth > 12) {
+    // Month validation
+    if (parsedMonth < 1 || parsedMonth > 12) {
       errors.value.expiryMonth = ["Invalid month"];
     }
 
-    // Check if the expiry date is in the past
-    if (parsedYear < currentYear || (parsedYear === currentYear && parsedMonth < currentMonth)) {
-      errors.value.expiryYear = ["Card is Expired"]; // Expired
+    // Expiry validation
+    if (
+      parsedYear < currentYear ||
+      (parsedYear === currentYear && parsedMonth < currentMonth)
+    ) {
+      errors.value.expiryMonth = ["Card is Expired"];
     }
 
-    // Check if the expiry date is more than 10 years in the future
+    // Future limit
     if (parsedYear > currentYear + 10) {
-      errors.value.expiryYear = ["Invalid Year"]; // More than 10 years in the future
+      errors.value.expiryMonth = ["Invalid Year"];
     }
 
-    return !(errors.value.expiryMonth && errors.value.expiryMonth[0] || errors.value.expiryYear && errors.value.expiryYear[0]);
-  }
+    return !(
+      errors.value.expiryMonth.length ||
+      errors.value.expiryYear.length
+    );
+  };
 
   // Handle Form Submit
   const handleSubmit = async () => {
@@ -189,7 +215,7 @@ export const useFormStore = defineStore("form", () => {
         await shippingStore.handleBillStateList();
         // await shippingStore.updateBillStateByName(checkoutStore.defaultRegion);
       }
-      if (formValues.value.sameAddress) {
+      if (formValues.value.sameAddress == 'same') {
         formValues.value.billingFirstName = formValues.value.firstName;
         formValues.value.billingLastName = formValues.value.lastName;
         formValues.value.billingAddress1 = formValues.value.address1;

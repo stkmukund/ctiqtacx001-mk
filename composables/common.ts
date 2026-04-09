@@ -409,7 +409,7 @@ export const extractAddressComponents = async (addressComponents: AddressCompone
     formStore.formValues.postalCode = postalCode;
     handleError('postalCode');
   }
-  if (formStore.formValues.sameAddress || type !== 'ship') {
+  if (formStore.formValues.sameAddress == 'different' || type !== 'ship') {
     formStore.formValues.billingAddress1 = streetNumber + " " + route;
     handleError('billingAddress1');
     formStore.formValues.billingCity = locality;

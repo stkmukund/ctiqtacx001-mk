@@ -30,9 +30,9 @@ export const useCheckoutStore = defineStore("checkout", () => {
   const config = useRuntimeConfig();
   const emailOptIn = ref(false);
   const vipOptIn = ref<boolean>(storage.getLocalItem('vipOptIn') || false);
-const rawOptIn = storage.getLocalItem('stiOptIn');
-// Convert rawOptIn to boolean safely
-const stiOptIn = ref<boolean>(rawOptIn == false ? false : true);
+  const rawOptIn = storage.getLocalItem('stiOptIn');
+  // Convert rawOptIn to boolean safely
+  const stiOptIn = ref<boolean>(rawOptIn == false ? false : true);
   // const stiOptIn = computed(() => (storage.getLocalItem('stiOptIn') || false));
   const tester = ref(false);
   interface VipProduct {
@@ -66,9 +66,25 @@ const stiOptIn = ref<boolean>(rawOptIn == false ? false : true);
   };
 
   const updateVipOptIn = (onLoad: boolean) => {
-    if (!onLoad) vipOptIn.value = !vipOptIn.value;
-    if (vipOptIn.value) addVipInCart();
-    else removeVipInCart();
+    const { removeCoupon } = cartStore;
+    if (!onLoad) {
+      vipOptIn.value = !vipOptIn.value;
+      formStore.formValues.discountCode = "";
+      removeCoupon('VIP5');
+    }
+    if (vipOptIn.value) {
+      addVipInCart();
+      formStore.formValues.discountCode = "VIP5";
+      setTimeout(() => {
+        calculateDiscount();
+      }, 500);
+    }
+    else {
+      removeVipInCart();
+      formStore.formValues.discountCode = "";
+      removeCoupon('VIP5');
+
+    }
   };
 
   const updateVipProduct = (productObject: VipProduct) => {

@@ -11,7 +11,7 @@ export interface FormData {
   country: string;
   state: string;
   postalCode: string;
-  sameAddress: boolean;
+  sameAddress: boolean | string;
   billingFirstName: string;
   billingLastName: string;
   billingAddress1: string;

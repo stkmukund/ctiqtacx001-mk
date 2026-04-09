@@ -1,6 +1,6 @@
 <template>
   <div>
-    <FormSectionHeader label="Billing Information" />
+    <!-- <FormSectionHeader label="Billing Information" /> -->
     <div class="sm:flex sm:space-x-4">
       <CustomInput id="billingFirstName" v-model="formValues.billingFirstName" type="text" placeholder="First Name"
         :errorMessage="errors.billingFirstName" />

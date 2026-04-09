@@ -142,9 +142,9 @@ small{
 .link:hover {
   text-decoration: underline;
 }
-.product-list .active {
+.product-list .activepackage {
     background: #F9FFF2;
-    border: 3px solid #4B6B24;
+    border: 2px solid #4B6B24;
 }
 .product-list .pl-item.selected .pl-variants {
     display: flex
