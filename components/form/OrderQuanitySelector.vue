@@ -96,7 +96,7 @@ const updatedSelectedPack = (campaignProductId: number) => {
           <input type="radio" :checked="selectedPack === product.campaignProductId" name="product"
             class="form-radio text-blue-500 w-5 h-5" :disabled="cartStore.selectDisabled" />
           <NuxtImg :src="product.image" :placeholder="[12, 12]"
-            class="lg:w-36 w-16 h-auto object-contain rounded-md border border-gray-300" />
+            class="lg:w-32 w-16 h-auto object-contain rounded-md border border-gray-300" />
           <div class="flex-1 lg:w-1/6 w-full">
             <!-- Badge -->
 
