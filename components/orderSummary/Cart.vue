@@ -6,12 +6,12 @@
         <div @click="isCollapsed = !isCollapsed"
           class="flex items-center justify-between p-4 border-b cursor-pointer bg-[#fafafa] lg:hidden" id="toggleSummary">
           <div class="flex items-center space-x-2">
-            <svg width="20px" height="20px" class="" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <!-- <svg width="20px" height="20px" class="" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path
                 d="M6.29977 5H21L19 12H7.37671M20 16H8L6 3H3M9 20C9 20.5523 8.55228 21 8 21C7.44772 21 7 20.5523 7 20C7 19.4477 7.44772 19 8 19C8.55228 19 9 19.4477 9 20ZM20 20C20 20.5523 19.5523 21 19 21C18.4477 21 18 20.5523 18 20C18 19.4477 18.4477 19 19 19C19.5523 19 20 19.4477 20 20Z"
                 stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-            </svg>
-            <span class="font-semibold text-sm" id="toggleText">Hide order summary 
+            </svg> -->
+            <span class="font-semibold text-sm" id="toggleText">{{ isCollapsed ? 'Show order summary' : 'Hide order summary' }}
               <i class="fas fa-angle-down"></i></span>
             <svg id="chevronIcon":class="['w-5 h-5 transition-transform duration-200 transform', isCollapsed ? 'rotate-0' : 'rotate-180']" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" /></svg>
           </div>

@@ -89,8 +89,8 @@ export default defineNuxtConfig({
       offer1_1: 173,
       offer2: 122,
       offer2_1: 109,
-      offer3: 72,
-      offer3_1: 132,
+      offer3: [72, 123],
+      offer3_1: [132, 134],
 
       offer4: 123, // currently not in use.
       thankyou: 71,

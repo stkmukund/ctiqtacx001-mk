@@ -24,7 +24,8 @@ onMounted(async () => {
 });
 
 const productDetails: any = ref({
-    product1_id: config.offer3,
+    product1_id: config.offer3[0],
+    product2_id: config.offer3[1],
     variant1_id: "",
     variant2_id: 2,
     productQty: 1,
@@ -38,7 +39,7 @@ const productDetails: any = ref({
 let allVariants: { variantOptionName1: string; variantOptionName2: string; variantDetailId: string }[] = [];
 
 const upsell = async () => {
-    const { productId, variants,title } = await upsellProducts(config.offer3);
+    const { productId, variants,title } = await upsellProducts(config.offer3[0]);
     productDetails.value.productId = productId;
     productDetails.value.ItemName=title;
     allVariants = variants

@@ -173,22 +173,35 @@ export const upsellProducts = async (id: number) => {
 }
 
 // Upsell Import
-export const importUpsell = async ({ productId, productQty, productPrice, variantDetailId, pageTo, ItemName, event }: { productId: string, productQty: number, productPrice: string, variantDetailId: string, pageTo: string, ItemName: string, event: string }) => {
+export const importUpsell = async ({ productId, productQty, productPrice, variantDetailId, pageTo, product1_id, product2_id, stepCompleted, title, variant1_id, variant2_id, ItemName, event }: { productId: string, productQty: number, productPrice: string, variantDetailId: string, pageTo: string, product1_id?: string, product2_id?: string, stepCompleted: number, title: string, variant1_id: string, variant2_id: string, ItemName: string, event: string }) => {
     // checkoutStore
-
+    let productQtyD = 1;
     const checkoutStore = useCheckoutStore();
     const alert = checkoutStore.updateAlert;
     checkoutStore.setTransactionStatus(true);
-    // Get orderId from session
-    const orderId = await storage.getSessionItem('orderId');
-    const merchantId = await storage.getSessionItem('merchantId');
 
-    const params: any = {
+    const orderId = await storage.getSessionItem('orderId');
+
+    const params: {
+        orderId: unknown;
+        productId?: string;
+        product1_id?: string;
+        variant1_id?: string;
+        variant2_id?: string;
+        product2_id?: string;
+        productQty: number;
+        productPrice: string;
+        variantDetailId: string;
+        xid: string;
+        cavv: string;
+        acsTransId: string;
+        eci: string;
+        version: string;
+        threeDsStatus: string;
+    } = {
         orderId,
-        productId,
         productQty,
-        productPrice,
-        variantDetailId,
+        // productPrice,
         xid: sessionStorage.getItem('xid') || '',
         cavv: sessionStorage.getItem('cavv') || '',
         acsTransId: sessionStorage.getItem('acsTransId') || '',
@@ -196,8 +209,22 @@ export const importUpsell = async ({ productId, productQty, productPrice, varian
         version: sessionStorage.getItem('version') || '',
         threeDsStatus: sessionStorage.getItem('status') || '',
     }
-    if (merchantId) params.forceMerchantId = merchantId;
+    if (product1_id) {
+        params.product1_id = product1_id;
+        params.product2_id = product2_id;
+        params.variant1_id = variant1_id;
+        params.variant2_id = variant2_id;
+        productQtyD = 2;
+        // Hardcoded as per discussion with backend team
+    }
+    else {
+        params.productId = productId;
+        params.variantDetailId = variantDetailId;
+
+    }
+
     const response: any = await apiHandler('importUpsell', params)
+    // console.log("response", response)
     const router = useRouter();
     if (response.result === 'SUCCESS') {
         const datalayerobj = {
@@ -206,24 +233,18 @@ export const importUpsell = async ({ productId, productQty, productPrice, varian
             ItemName: ItemName,
             ItemPrice: productPrice,
             value: productPrice,
-            ItemQty: productQty,
+            ItemQty: productQtyD,
             orderid: response.message.orderId,
         };
         checkoutStore.setTransactionStatus(false);
-        if (pageTo == "/offer1_1") checkoutStore.setStepCompleted(2)
         if (pageTo == "/offer2") checkoutStore.setStepCompleted(3)
         if (pageTo == "/offer2_1") checkoutStore.setStepCompleted(4)
         if (pageTo == "/offer3") checkoutStore.setStepCompleted(5)
-        // if (pageTo == "/offer4") checkoutStore.setStepCompleted(6)
         if (pageTo == "/offer3_1") checkoutStore.setStepCompleted(6)
         if (pageTo == "/thankyou") checkoutStore.setStepCompleted(7)
-        // if (pageTo == "/offer2") checkoutStore.setStepCompleted(2)
-        // if (pageTo == "/offer2_1") checkoutStore.setStepCompleted(3)
-        // if (pageTo == "/offer3") checkoutStore.setStepCompleted(4)
-        // if (pageTo == "/offer4") checkoutStore.setStepCompleted(5)
-        // if (pageTo == "/thankyou") checkoutStore.setStepCompleted(6)
         // Important for DataLayer and CAPI
         const mapppedData = mapToProductCart(response.message.items);
+        console.log("mapppedData", mapppedData)
         storage.setSessionItem('productCart', mapppedData);
         storage.setSessionItem('subTotal', response.message.subTotal);
         storage.setSessionItem('shipping', response.message.shipTotal);
