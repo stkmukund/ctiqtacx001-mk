@@ -42,7 +42,7 @@
         <Spacer />
       </div>
       <!-- Right -->
-      <div class="lg:w-5/12 sm:w-full max-w-full px-2 lg:px-3 mx-3 bg-gray-100">
+      <div class="lg:w-5/12 sm:w-full max-w-full px-2 lg:px-3 mx-0 bg-gray-100">
         <div class="">
           <!-- Left Box 1 -->
           <section id="left-box-1">
