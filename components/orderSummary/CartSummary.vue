@@ -1,5 +1,5 @@
 <template>
-  <table class="w-full bg-white text-sm sm:text-base">
+  <table class="w-full bg-white text-sm sm:text-base hidden sm:table">
     <tbody class="">
       <tr v-for="(label, index) in summaryItems" :key="index">
         <td class="px-4 py-1.5 font-semibold" width="80%">{{ label.name }}</td>

@@ -3,8 +3,8 @@
     <div class="p-0 lg:p-0 border-0">
       <section id="collapseSection" class="border-0">
         <!-- Collapse Header -->
-        <!-- <div @click="isCollapsed = !isCollapsed"
-          class="flex items-center justify-between p-4 border-b cursor-pointer bg-[#fafafa]" id="toggleSummary">
+        <div @click="isCollapsed = !isCollapsed"
+          class="flex items-center justify-between p-4 border-b cursor-pointer bg-[#fafafa] lg:hidden" id="toggleSummary">
           <div class="flex items-center space-x-2">
             <svg width="20px" height="20px" class="" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path
@@ -17,7 +17,7 @@
           </div>
           <div class="font-semibold">${{ total }}</div>
 
-        </div> -->
+        </div>
         <Transition name="collapse">
           <main class="border-0 border-[#e5e5e5]" v-if="!isCollapsed">
             <table class="w-full bg-white text-sm sm:text-base p-4 border border-[#dfdfdf]">

@@ -178,10 +178,10 @@
               </p>
 
               <!-- Contact Section -->
-              <div class="flex flex-col sm:flex-row sm:items-center gap-4">
+              <div class="flex flex-row sm:flex-row sm:items-center gap-4">
 
                 <!-- Phone -->
-                <a href="tel:+17752041037" class="flex items-center gap-2 text-gray-700 hover:text-black transition">
+                <a href="tel:+17752041037" class="flex items-center gap-1 text-gray-700 hover:text-black transition">
                   <span class="w-7 h-7 flex items-center justify-center border rounded-full text-sm">
                     <img :src="'/images/phone.png'" class="w-5 h-5" />
                   </span>
@@ -192,7 +192,7 @@
 
                 <!-- Email -->
                 <a href="mailto:help@tacticalabs.com"
-                  class="flex items-center gap-2 text-gray-700 hover:text-black transition">
+                  class="flex items-center gap-1 text-gray-700 hover:text-black transition">
                   <span class="w-7 h-7 flex items-center justify-center border rounded-full text-sm">
                     <img :src="'/images/email.png'" class="w-5 h-5" />
                   </span>

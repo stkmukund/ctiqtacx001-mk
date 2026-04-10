@@ -30,7 +30,7 @@ const productDetails = [
     productName: "Tactical X Abs Stimulator - Abs + Arms + 12 Extra Gel Pads",
     price: "89.99",
     compareAtPrice: "199.98",
-    discount: "Save $110.00 (55.00%)",
+    discount: "Save $110.00 (55%)",
     image: "/images/product2.svg",
   },
   // {
@@ -47,7 +47,7 @@ const productDetails = [
     productName: "Tactical X Abs Stimulator 2025 - Abs + Arms + 36 Extra Gel Pads",
     price: "99.99",
     compareAtPrice: "249.98",
-    discount: "Save $149.99 (60.00% Off!)",
+    discount: "Save $149.99 (60% Off!)",
     image: "/images/product3.svg",
 
   },
@@ -82,10 +82,10 @@ const updatedSelectedPack = (campaignProductId: number) => {
   <section id="quanity-selector-body" :class="className">
     <div>
       <!-- Body -->
-      <main class="pb-0 flex flex-col gap-3 lg:gap-5 product-list">
+      <main class="pb-0 flex flex-col gap-3 lg:gap-5 product-list ">
         <label v-for="product in productDetails" :key="product.campaignProductId"
           @click="!cartStore.selectDisabled && updatedSelectedPack(product.campaignProductId)" :class="[
-            'flex items-center gap-3 border-2 rounded-lg cursor-pointer transition-all duration-200 bg-white hover:bg-gray-100 lg:p-4 p-2 w-full relative',
+            'flex items-center gap-3 border-2 rounded-lg cursor-pointer transition-all duration-200 bg-white hover:bg-gray-100 lg:h-36 h-full lg:p-4 p-2 w-full relative',
             selectedPack === product.campaignProductId ? 'activepackage' : '',
             product.campaignProductId === 159
               ? 'pl-item bg-white hover:bg-gray-100'
@@ -99,24 +99,22 @@ const updatedSelectedPack = (campaignProductId: number) => {
             class="lg:w-32 w-16 h-auto object-contain rounded-md border border-gray-300" />
           <div class="flex-1 lg:w-1/6 w-full">
             <!-- Badge -->
-
-
             <span :class="[
-              'inline-block text-white text-xs font-semibold px-3 py-1 rounded-full mb-2',
+              'inline-block text-white lg:text-sm font-semibold lg:w-52 text-[10px] w-32 lg:px-3 text-center lg:py-1.5 py-1 rounded-full lg:mb-2 leading-2',
               product.campaignProductId === 159 ? 'bg-[#4B6B24]' : 'bg-black'
             ]">
               {{ product.discount }}
             </span>
-            <p class="font-semibold text-sm sm:text-base mt-1 tracking-tight leading-5 w-4/5">{{ product.productName }}
+            <p class="font-semibold text-sm sm:text-base mt-1 tracking-tight lg:leading-5 w-4/5">{{ product.productName }}
             </p>
           </div>
-          <div class="text-right lg:pr-2 pr-0 flex flex-col justify-center">
+          <div class="text-right lg:pr-2 pr-6 flex flex-col justify-center">
 
-            <p class="text-base sm:text-lg line-through text-red-500 font-semibold leading-tight">
+            <p class="text-sm sm:text-lg line-through text-red-500 font-semibold leading-tight">
               ${{ product.compareAtPrice }}
             </p>
 
-            <p class="text-base sm:text-2xl font-bold text-gray-900 leading-tight">
+            <p class="text-sm sm:text-2xl font-bold text-gray-900 leading-tight">
               ${{ product.price }}
             </p>
 
