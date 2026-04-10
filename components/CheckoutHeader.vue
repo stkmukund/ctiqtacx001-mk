@@ -12,7 +12,7 @@
   <div class="w-full max-w-6xl mx-auto bg-white grid grid-cols-1 lg:grid-cols-12 sm:grid-cols-12">
 
     <!-- LEFT SIDE -->
-    <div class="sm:col-span-7 flex flex-col items-center justify-center text-center px-4 py-6 md:py-5 space-y-2">
+    <div class="lg:col-span-7 col-span-12 flex flex-col items-center justify-center text-center px-4 py-6 md:py-5 space-y-2">
       
       <!-- Logo -->
       <img src="/images/logo.svg" alt="Logo" class="h-10 object-contain" />
@@ -43,47 +43,47 @@
    
 
     <!-- Badges -->
-    <div class="flex lg:flex-wrap flex-nowrap justify-center items-center lg:gap-4 gap-2 lg:text-sm text-[0.7rem] text-gray-800">
+    <div class="flex lg:flex-wrap flex-nowrap justify-center items-center lg:gap-4 gap-1 lg:text-sm text-[0.7rem] text-gray-800">
      <div class="flex items-center text-yellow-400">
 
   <!-- 4 Full Stars -->
-    <svg class="lg:w-5 lg:h-5 w-3 h-3" fill="currentColor" viewBox="0 0 20 20">
+    <svg class="lg:w-5 lg:h-5 w-2 h-2" fill="currentColor" viewBox="0 0 20 20">
     <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.286 3.962h4.163c.969 0 1.371 1.24.588 1.81l-3.37 2.448 1.287 3.962c.3.921-.755 1.688-1.54 1.118L10 13.348l-3.375 2.878c-.784.57-1.838-.197-1.539-1.118l1.287-3.962-3.37-2.448c-.783-.57-.38-1.81.588-1.81h4.163l1.295-3.961z"/>
   </svg>
-    <svg class="lg:w-5 lg:h-5 w-3 h-3" fill="currentColor" viewBox="0 0 20 20">
+    <svg class="lg:w-5 lg:h-5 w-2 h-2" fill="currentColor" viewBox="0 0 20 20">
     <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.286 3.962h4.163c.969 0 1.371 1.24.588 1.81l-3.37 2.448 1.287 3.962c.3.921-.755 1.688-1.54 1.118L10 13.348l-3.375 2.878c-.784.57-1.838-.197-1.539-1.118l1.287-3.962-3.37-2.448c-.783-.57-.38-1.81.588-1.81h4.163l1.295-3.961z"/>
   </svg>
-    <svg class="lg:w-5 lg:h-5 w-3 h-3" fill="currentColor" viewBox="0 0 20 20">
+    <svg class="lg:w-5 lg:h-5 w-2 h-2" fill="currentColor" viewBox="0 0 20 20">
     <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.286 3.962h4.163c.969 0 1.371 1.24.588 1.81l-3.37 2.448 1.287 3.962c.3.921-.755 1.688-1.54 1.118L10 13.348l-3.375 2.878c-.784.57-1.838-.197-1.539-1.118l1.287-3.962-3.37-2.448c-.783-.57-.38-1.81.588-1.81h4.163l1.295-3.961z"/>
   </svg>
-    <svg class="lg:w-5 lg:h-5 w-3 h-3" fill="currentColor" viewBox="0 0 20 20">
+    <svg class="lg:w-5 lg:h-5 w-2 h-2" fill="currentColor" viewBox="0 0 20 20">
     <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.286 3.962h4.163c.969 0 1.371 1.24.588 1.81l-3.37 2.448 1.287 3.962c.3.921-.755 1.688-1.54 1.118L10 13.348l-3.375 2.878c-.784.57-1.838-.197-1.539-1.118l1.287-3.962-3.37-2.448c-.783-.57-.38-1.81.588-1.81h4.163l1.295-3.961z"/>
   </svg>
 
   <!-- Half Star -->
- <div class="relative lg:w-5 lg:h-5 w-3 h-3">
+ <div class="relative lg:w-5 lg:h-5 w-2 h-2">
     <!-- Gray -->
-    <svg class="absolute lg:w-5 lg:h-5 w-3 h-3 text-gray-300" fill="currentColor" viewBox="0 0 20 20">
+    <svg class="absolute lg:w-5 lg:h-5 w-2 h-2 text-gray-300" fill="currentColor" viewBox="0 0 20 20">
       <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.286 3.962h4.163c.969 0 1.371 1.24.588 1.81l-3.37 2.448 1.287 3.962c.3.921-.755 1.688-1.54 1.118L10 13.348l-3.375 2.878c-.784.57-1.838-.197-1.539-1.118l1.287-3.962-3.37-2.448c-.783-.57-.38-1.81.588-1.81h4.163l1.295-3.961z"/>
     </svg>
 
     <!-- Yellow Half -->
     <div class="absolute top-0 left-0 w-1/2 h-full overflow-hidden">
-      <svg class="lg:w-5 lg:h-5 w-3 h-3 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
-        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.286 3.962h4.163c.969 0 1.371 1.24.588 1.81l-3.37 2.448 1.287 3.962c.3.921-.755 1.688-1.54 1.118L10 13.348l-3.375 2.878c-.784.57-1.838-.197-1.539-1.118l1.287-3.962-3.37-2.448c-.783-.57-.38-1.81.588-1.81h4.163l1.295-3.961z"/>
+      <svg class="lg:w-5 lg:h-5 w-2 h-2 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.286 3.962h4.163c.969 0 1.371 1.24.588 1。8１l-3.37 ２．4４８ １．２８７ ３．９６２c．３．９２１－．７５５ １．６８８－１．５４ １．１１８L１０ １３．３４８l－３．３７５ ２．８７８c－．７８４．５７－１．８３８－．１９７－１．５３９－１．１１８l１．２８７－３．９６２－３．３７－２．４４８c－．７８３－．５７－．３８－１．８１＋０．５８８－１．８１h４．１６３l１．２９５－３．９６１z"/>
       </svg>
     </div>
   </div>
 
 </div>  
       <div class="flex items-center gap-1">
-        <img class="lg:w-5 w-3" src="/images/secure.png" />
-        <span class="text-[11px] lg:text-sm">30-Day Money-Back Guarantee</span>
+        <img class="lg:w-5 w-2" src="/images/secure.png" />
+        <span class="text-[10px] lg:text-sm">30-Day Money-Back Guarantee</span>
       </div>
 
       <div class="flex items-center gap-1">
-        <img class="lg:w-5 w-3" src="/images/lock.png" />
-        <span class="text-[11px] lg:text-sm">Secure Checkout</span>
+        <img class="lg:w-5 w-2" src="/images/lock.png" />
+        <span class="text-[10px] lg:text-sm">Secure Checkout</span>
       </div>
 
     </div>
