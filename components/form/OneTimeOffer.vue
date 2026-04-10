@@ -9,7 +9,7 @@ const stiOptIn = ref(checkoutStore.stiOptIn);
 const { updateStiOptIn } = checkoutStore;
 </script>
 <template>
-    <div class="px-2 lg:px-3 pb-3">
+    <div class="px-0 lg:px-0 pb-3">
 <div class="bg-[#f1f1f1] pb-3">
 
   <!-- Header -->

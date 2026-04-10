@@ -43,7 +43,7 @@
                 <CustomInput v-model="formStore.formValues.discountCode" type="text" placeholder="Coupon Code"
                   class="sm:mr-3 mt-2" width="w-full" />
               </div>
-              <div class="w-4/12 pr-0 pt-4">
+              <div class="w-4/12 pr-0 pt-2">
                 <CustomButton placeholder="Apply" @click="calculateDiscount" />
               </div>
             </div>

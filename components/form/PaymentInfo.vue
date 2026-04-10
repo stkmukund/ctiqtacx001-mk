@@ -5,7 +5,7 @@
       <label for="creditCard" @click="() => handlePaymentOptionClick('CREDITCARD')"
         class="font-semibold flex items-center justify-between p-2 text-lg cursor-pointer">
         <!-- Right Section -->
-        <aside class="flex items-center gap-2 sm:gap-3">
+        <aside class="flex items-center gap-1 sm:gap-3">
           <div @click="formStore.formValues.paymentMethod = 'CREDITCARD'" :class="[
             'w-5 h-5 rounded-full flex items-center justify-center cursor-pointer border-2',
             formStore.formValues.paymentMethod === 'CREDITCARD'
@@ -15,11 +15,11 @@
             <div v-if="formStore.formValues.paymentMethod === 'CREDITCARD'" class="w-3 h-3 rounded-full bg-[#0075FF]">
             </div>
           </div>
-          <span>Credit Card</span>
+          <span class="lg:text-base text-xs">Credit Card</span>
         </aside>
-        <aside class="flex items-center gap-2">
+        <aside class="flex items-center lg:gap-2 gap-1">
           <NuxtImg src="/images/card.png" loading="lazy" class="w-32 sm:w-40" />
-          <span class="text-xs text-gray-300 whitespace-nowrap">
+          <span class="lg:text-xs text-[10px] text-gray-300 whitespace-nowrap">
             and more...
           </span>
         </aside>

@@ -14,7 +14,7 @@ defineProps({
 </script>
 <template>
     <section id="quanity-selector" :class='className'>
-        <div class="bg-[#fff] py-0 lg:px-3 px-2">
+        <div class="bg-[#fff] py-0 lg:px-0 px-0">
             <h1 class="lg:text-xl text-base font-semibold sm:font-bold">{{ title }}</h1>
         </div>
     </section>

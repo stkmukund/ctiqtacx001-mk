@@ -24,7 +24,7 @@
               <SectionLabel title="Shipping Method" />
               <Spacer />
 
-              <div class="px-2 lg:px-3 pb-3 mt-7">
+              <div class="px-0 lg:px-0 pb-3 mt-7">
               <CustomSelect v-if="formStore.formValues.country || formStore.formValues.billingCountry"
                 v-model="formStore.formValues.shippingMethod" :errorMessage="formStore.errors.shippingMethod"
                 :options="checkoutStore.vipOptIn ? shippingStore.freeShipping : checkoutStore.shippingThreshold ? shippingStore.freeShipping : shippingStore.shippingMethods"
@@ -42,7 +42,7 @@
         <Spacer />
       </div>
       <!-- Right -->
-      <div class="lg:w-5/12 sm:w-full max-w-full px-2 lg:px-3 bg-gray-100">
+      <div class="lg:w-5/12 sm:w-full max-w-full px-2 lg:px-3 mx-3 bg-gray-100">
         <div class="">
           <!-- Left Box 1 -->
           <section id="left-box-1">
@@ -65,7 +65,7 @@
             <!-- Payment -->
             <!-- <SectionLabel class-name="" title="Payment Information" /> -->
 
-            <div class="p-3 mt-4 border">
+            <div class="lg:p-3 p-1 mt-4 border">
               <span class="flex lg:text-xl text-lg font-medium sm:font-medium gap-1 text-[#000]">
                 Payment Information</span>
               <Spacer :mt="1" />
@@ -102,8 +102,8 @@
               <Spacer />
               <!-- Second Part -->
               <div class="flex flex-wrap items-center gap-2 p-2 lg:p-3">
-                <NuxtImg src="/images/check.png" alt="People Trust Ust" class="w-6" />
-                <h3 class="font-bold text-xl">Why Do Over 100,000 People Trust Us?</h3>
+               <div class="flex flex-row items-center gap-2"><NuxtImg src="/images/check.png" alt="People Trust Ust" class="lg:w-6 w-5 " />
+                <h3 class="font-bold lg:text-xl text-base">Why Do Over 100,000 People Trust Us?</h3></div> 
                 <p class="text-sm">Our mission at Tactical X Abs is to empower you on your fitness journey without
                   breaking the bank. We're so confident you will see incredible results that we offer a 30-day
                   money-back guarantee, no questions asked.</p>
@@ -170,22 +170,22 @@
               <Testimonial />
             </div>
             <Spacer />
-            <div class="p-2 sm:items-center sm:justify-between gap-3">
+            <div class="p-0 sm:items-center sm:justify-between gap-3">
 
               <!-- Text -->
-              <p class="font-bold text-base sm:text-xl">
+              <p class="font-bold text-sm sm:text-xl">
                 Need help? Contact our 24/7 customer support:
               </p>
 
               <!-- Contact Section -->
-              <div class="flex flex-row sm:flex-row sm:items-center gap-4">
+              <div class="flex flex-row sm:flex-row sm:items-center lg:gap-4 gap-1">
 
                 <!-- Phone -->
                 <a href="tel:+17752041037" class="flex items-center gap-1 text-gray-700 hover:text-black transition">
                   <span class="w-7 h-7 flex items-center justify-center border rounded-full text-sm">
                     <img :src="'/images/phone.png'" class="w-5 h-5" />
                   </span>
-                  <span class="text-sm sm:text-base font-medium">
+                  <span class="text-xs sm:text-base font-medium">
                     +1 (775) 204-1037
                   </span>
                 </a>
@@ -196,7 +196,7 @@
                   <span class="w-7 h-7 flex items-center justify-center border rounded-full text-sm">
                     <img :src="'/images/email.png'" class="w-5 h-5" />
                   </span>
-                  <span class="text-sm sm:text-base font-medium">
+                  <span class="text-xs sm:text-base font-medium">
                     help@tacticalabs.com
                   </span>
                 </a>
